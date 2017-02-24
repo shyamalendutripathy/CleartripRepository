@@ -17,7 +17,7 @@ public class SearchCalendarFactory {
 	@FindAll(@FindBy(how=How.XPATH, using ="//input[@id='DepartDate']")) WebElement departDateTextBox;
 	@FindAll(@FindBy(how=How.XPATH, using ="//input[@id='ReturnDate']")) WebElement returnDateTextBox;
 	
-	public void selectDepartDate(WebDriver driver){
+	public void selectDate(WebDriver driver,String departDate,String currentDate){
 		departDateTextBox.click();
 		DateFormat dateFormat=new SimpleDateFormat("dd/MM/yyyy");
 		Date date=new Date();
@@ -30,7 +30,7 @@ public class SearchCalendarFactory {
 		List<WebElement> departList=driver.findElements(By.xpath(destDatePath));
 		
 		for(WebElement elem:departList){
-			if(elem.getText().equals("27")){
+			if(elem.getText().equals(departDate)){
 				elem.click();
 				break;
 			}
@@ -41,7 +41,7 @@ public class SearchCalendarFactory {
 		List<WebElement> returnList=driver.findElements(By.xpath(retDatePath));
 		
 		for(WebElement elem:returnList){
-			if(elem.getText().equals("23")){
+			if(elem.getText().equals(currentDate)){
 				elem.click();
 				break;
 			}

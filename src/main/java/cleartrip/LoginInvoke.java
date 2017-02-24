@@ -12,6 +12,7 @@ public class LoginInvoke {
 	final Integer adultSeats=2;
 	@Test
 	public void search(){
+//		SingleTon Pattern to get the Login Instance
 		LoginInstance instance=LoginInstance.init();
 		WebDriver driver= instance.returnDriver();
 		
@@ -20,7 +21,8 @@ public class LoginInvoke {
 		
 		searchPageObj.enterFromToTextBox(driver,"Delhi","Bhubaneswar");
 		
-		searchPageObj.selectDate(driver);
+//		Sample Dates. Depart Date for current month and return date for Next Month
+		searchPageObj.selectDate(driver,"27","28");
 		searchPageObj.selectSeats("2", "0", "0");
 		searchPageObj.search();
 		

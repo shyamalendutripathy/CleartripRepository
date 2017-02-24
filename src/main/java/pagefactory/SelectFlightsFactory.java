@@ -43,9 +43,9 @@ public class SelectFlightsFactory {
 		toFirstVal.click();
 	}
 	
-	public void selectDate(WebDriver driver){
+	public void selectDate(WebDriver driver,String departDate,String currentDate){
 		SearchCalendarFactory searchPageObj=PageFactory.initElements(driver, SearchCalendarFactory.class);
-		searchPageObj.selectDepartDate(driver);
+		searchPageObj.selectDate(driver,departDate,currentDate);
 	}
 	
 	public void selectSeats(String adults,String children,String infants){
