@@ -1,5 +1,8 @@
 package pagefactory;
 
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
@@ -12,6 +15,9 @@ public class SelectFlightsFactory {
 	@FindBy(how=How.XPATH, using ="//input[@id='RoundTrip']") WebElement roundTripBtn;
 	@FindBy(how=How.XPATH, using ="//input[@id='FromTag']") WebElement fromTextBox;
 	@FindBy(how=How.XPATH, using ="//input[@id='ToTag']") WebElement toTextBox;
+	@FindBy(how=How.XPATH, using ="//ul[@id='ui-id-1']/li/a") WebElement fromFirstVal;
+	@FindBy(how=How.XPATH, using ="//ul[@id='ui-id-2']/li/a") WebElement toFirstVal;
+	
 	
 	@FindAll(@FindBy(how=How.XPATH, using ="//input[@id='DepartDate']")) WebElement departDateTextBox;
 	@FindAll(@FindBy(how=How.XPATH, using ="//input[@id='ReturnDate']")) WebElement returnDateTextBox;
@@ -26,9 +32,16 @@ public class SelectFlightsFactory {
 		roundTripBtn.click();
 	}
 	
-	public void enterFromToTextBox(String from,String to){
+	public void enterFromToTextBox(WebDriver driver,String from,String to){
+		fromTextBox.click();
 		fromTextBox.sendKeys(from);
+		driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+		fromFirstVal.click();
+
+		toTextBox.click();
 		toTextBox.sendKeys(to);
+		driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+		toFirstVal.click();
 	}
 	
 	public void selectDate(WebDriver driver){

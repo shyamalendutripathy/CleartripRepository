@@ -30,7 +30,7 @@ public class SearchCalendarFactory {
 		List<WebElement> departList=driver.findElements(By.xpath(destDatePath));
 		
 		for(WebElement elem:departList){
-			if(elem.getText().equals("24")){
+			if(elem.getText().equals("27")){
 				elem.click();
 				break;
 			}

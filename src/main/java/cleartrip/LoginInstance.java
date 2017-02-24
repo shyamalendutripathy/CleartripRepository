@@ -20,9 +20,8 @@ public class LoginInstance {
 			options.addArguments("--disable-notifications");
 
 			driver=new ChromeDriver(options);
-
-			driver.get("https://www.cleartrip.com/");
 			driver.manage().window().maximize();
+			driver.get("https://www.cleartrip.com/");
 		}
 		return loginInstance;
 	}
