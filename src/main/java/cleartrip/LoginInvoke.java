@@ -4,10 +4,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
 
+import pagefactory.EditBookinginfo;
 import pagefactory.FlightSelection;
 import pagefactory.SelectFlightsFactory;
 
 public class LoginInvoke {
+	final Integer adultSeats=3;
 	@Test
 	public void search(){
 		LoginInstance instance=LoginInstance.init();
@@ -19,7 +21,7 @@ public class LoginInvoke {
 		searchPageObj.enterFromToTextBox(driver,"Delhi","Bhubaneswar");
 		
 		searchPageObj.selectDate(driver);
-		searchPageObj.selectSeats("2", "0", "0");
+		searchPageObj.selectSeats("1", "0", "0");
 		searchPageObj.search();
 		
 		
@@ -27,5 +29,19 @@ public class LoginInvoke {
 		
 		selection.waitTillBookBtn(driver);
 		selection.bookflight();
+		
+		
+		EditBookinginfo bookObj=PageFactory.initElements(driver,EditBookinginfo.class);
+		
+		bookObj.performAndBookItenerary(driver);
+		bookObj.enterEmailAndContinue(driver,"stripathy210@gmail.com");
+		
+		String[] fName=new String[adultSeats];
+		fName[0]="firstabcd";
+		
+		String[] lName=new String[adultSeats];
+		lName[0]="lastabcd";
+		
+		bookObj.enterPassengerDetails(driver,fName, lName, "9717297235");
 	}
 }
