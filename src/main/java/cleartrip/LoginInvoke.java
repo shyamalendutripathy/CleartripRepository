@@ -9,7 +9,7 @@ import pagefactory.FlightSelection;
 import pagefactory.SelectFlightsFactory;
 
 public class LoginInvoke {
-	final Integer adultSeats=3;
+	final Integer adultSeats=2;
 	@Test
 	public void search(){
 		LoginInstance instance=LoginInstance.init();
@@ -21,7 +21,7 @@ public class LoginInvoke {
 		searchPageObj.enterFromToTextBox(driver,"Delhi","Bhubaneswar");
 		
 		searchPageObj.selectDate(driver);
-		searchPageObj.selectSeats("1", "0", "0");
+		searchPageObj.selectSeats("2", "0", "0");
 		searchPageObj.search();
 		
 		
@@ -38,9 +38,11 @@ public class LoginInvoke {
 		
 		String[] fName=new String[adultSeats];
 		fName[0]="firstabcd";
+		fName[1]="firstxyzw";
 		
 		String[] lName=new String[adultSeats];
 		lName[0]="lastabcd";
+		lName[1]="lastxyzw";
 		
 		bookObj.enterPassengerDetails(driver,fName, lName, "9717297235");
 	}
