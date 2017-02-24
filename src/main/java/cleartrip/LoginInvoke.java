@@ -22,10 +22,10 @@ public class LoginInvoke {
 		searchPageObj.selectSeats("2", "0", "0");
 		searchPageObj.search();
 		
-		FlightSelection selection=new FlightSelection();
+		
+		FlightSelection selection=PageFactory.initElements(driver,FlightSelection.class);
+		
 		selection.waitTillBookBtn(driver);
-		
-		System.out.println("Welcome After Wait");
-		
+		selection.bookflight();
 	}
 }
